@@ -6,3 +6,4 @@ patches:
   "3.1.12":
     - patch_file: "patches/0001-respect-cflags.patch"
     - patch_file: "patches/0002-no-msvc-warnings.patch"
+    - patch_file: "patches/0003-fix-typedef-int.patch"
