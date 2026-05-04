@@ -53,7 +53,7 @@ class LibmodbusConan(ConanFile):
 
         if is_msvc(self):
             self.tool_requires("automake/1.16.5")
-            
+
         if self._settings_build.os == "Windows":
             self.win_bash = True
             if not self.conf.get("tools.microsoft.bash:path", check_type=str):
@@ -61,6 +61,7 @@ class LibmodbusConan(ConanFile):
 
     def source(self):
         get(self, **self.conan_data["sources"][self.version], strip_root=True)
+        apply_conandata_patches(self)
 
     def generate(self):
         tc = AutotoolsToolchain(self)
@@ -72,10 +73,10 @@ class LibmodbusConan(ConanFile):
         tc.generate()
 
     def _patch_sources(self):
-        apply_conandata_patches(self)
         if not self.options.shared:
             for decl in ("__declspec(dllexport)", "__declspec(dllimport)"):
                 replace_in_file(self, os.path.join(self.source_folder, "src", "modbus.h"), decl, "")
+
     def build(self):
         self._patch_sources()
         autotools = Autotools(self)
