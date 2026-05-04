@@ -2,11 +2,6 @@ sources:
   "3.1.12":
     url: "https://github.com/stephane/libmodbus/releases/download/v3.1.12/libmodbus-3.1.12.tar.gz"
     sha256: "2f4d4191cd196c1fba131daec03b621db75129d8255c832fc66b259d9fc46e7b"
-  "3.1.11":
-    url: "https://github.com/stephane/libmodbus/archive/refs/tags/v3.1.11.tar.gz"
-    sha256: "8a750452ef86a53de6cec6fbca67bd5be08d0a1e87278a422fbce3003fd42d99"
 patches:
   "3.1.12":
     - patch_file: "patches/0001-respect-cflags.patch"
-  "3.1.11":
-    - patch_file: "patches/3.1.11-0001-msvc-fixes.patch"
